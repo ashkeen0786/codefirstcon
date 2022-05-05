@@ -1,0 +1,35 @@
+pakage download-
+core
+design
+sql server
+tool
+
+2.create property in model class
+public class empolyee{
+[key]
+public int id {get;set}
+[required]
+public string name {get; set;}
+[required]
+public string email{get; set;}
+[required]
+public string phone{get; set;}
+
+3.connectio string in .json--
+"ConnectionString":{
+"DefaultConection":"Server=---;Database=-----;Trusted_Connection=True;"
+}
+4.create class in model --
+public classs dbcontext:DbContext{
+public dbcontext(DbContextOptions<dbcontext>options):base(options){
+}
+public Dbset<empolyee>empolyees{get;set;}
+}}
+5.write in startup.cs--
+services.AddDbContext<dbcontext>(options=>options.UseSqlServer(
+Configuration.GetConnectionString("DefaultConnection"));
+}
+
+6.Add-migration mymigration
+7.update-database
+8...update-database mymigration
